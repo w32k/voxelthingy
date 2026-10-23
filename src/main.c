@@ -53,12 +53,12 @@ int main(){
                     Ray ray = GetScreenToWorldRay(screenCenter, cam);
                     Color color = {i * idk, j * idk, z * idk, 255};
                     RayCollision collision = GetRayCollisionBox(ray, b);
-                    if(!collision.hit){
-                        // if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT)){
-                        //     box[i][j][z] = false;
-                        // }
-                        // DrawCubeWires(position, 1, 1, 1, WHITE);
-                        // color.a = 120;
+                    if(collision.hit){
+                        if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT)){
+                            box[i][j][z] = false;
+                        }
+                        DrawCubeWires(position, 1, 1, 1, WHITE);
+                        color.a = 120;
                         continue;
                     }
                     CubeFaces cube = 0;
@@ -93,15 +93,8 @@ int main(){
                     } else if(box[i][j][z+1] == false && z < WORLD_SIZE){
                         cube |= FACE_FRONT;
                     }
-                    if(collision.hit){
-                        // if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT)){
-                        //     box[i][j][z] = false;
-                        // }
-                        // DrawCubeWires(position, 1, 1, 1, WHITE);
-                        // color.a = 120;
-                        DrawCubeOptimized(position, 1, 1, 1, cube, color);
-                    }
-                    //DrawCubeOptimized(position, 1, 1, 1, cube, color);
+
+                    DrawCubeOptimized(position, 1, 1, 1, cube, color);
                     //DrawCube(position, 1, 1, 1, color);
 
                 }
