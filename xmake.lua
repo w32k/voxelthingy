@@ -8,8 +8,13 @@ target("idk")
     add_includedirs("raylib/src");
     set_targetdir("build-$(os)-$(arch)")
     add_files("src/*.c")
-    add_syslinks("gdi32", "winmm", "opengl32")
 
+    if is_os("windows") then
+        add_syslinks("gdi32", "winmm")
+    end
+    if is_os("linux") then
+        add_syslinks("X11")
+    end
 
 
 
