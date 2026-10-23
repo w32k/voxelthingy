@@ -1,13 +1,14 @@
 set_policy("check.auto_ignore_flags", false)
 
+includes("raylib")
 
 target("idk")
+    add_deps("raylib")
     add_toolchains("w64devkit")
+    add_includedirs("raylib/src");
     set_targetdir("build-$(os)-$(arch)")
-    add_linkdirs("lib/$(os)/$(arch)")
     add_files("src/*.c")
-    add_links("raylib")
-    add_syslinks("gdi32", "winmm")
+    add_syslinks("gdi32", "winmm", "opengl32")
 
 
 
