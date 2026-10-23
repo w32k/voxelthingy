@@ -1,7 +1,6 @@
 set_policy("check.auto_ignore_flags", false)
 
 
-
 target("idk")
     add_toolchains("w64devkit")
     set_targetdir("build-$(os)-$(arch)")
@@ -17,7 +16,13 @@ target("idk")
 
 
 
+target("clean")
+    set_kind("phony")
 
+    on_run(function()
+        os.rm(".xmake", {async = true, detach = true})
+        os.rm("build", {async = true, detach = true})
+    end)
 
 
 
