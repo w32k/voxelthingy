@@ -17,7 +17,7 @@ int main(){
             }
         }
     }
-    InitWindow(1600, 900, "Cube");
+    InitWindow(800, 600, "Cube");
     Camera3D cam = {
         .position = (Vector3){
             2.0, 25, 2.0
