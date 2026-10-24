@@ -10,7 +10,7 @@ target("idk")
     add_files("src/*.c")
 
     if is_os("windows") then
-        add_syslinks("gdi32", "winmm")
+        add_syslinks("gdi32", "winmm", "opengl32")
     end
     if is_os("linux") then
         add_syslinks("X11")
