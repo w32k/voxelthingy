@@ -22,7 +22,8 @@ int main(){
         .fovy = 90,
         .projection = CAMERA_PERSPECTIVE
     };
-    Texture2D texture = LoadTexture("assets/blocks.png");
+    Texture2D blockTextures = LoadTexture("assets/blocks.png");
+    Texture2D itemTextures = LoadTexture("assets/items.png");
     DisableCursor();
     while(!WindowShouldClose()){
         UpdateCamera(&cam, CAMERA_FREE);
@@ -30,11 +31,17 @@ int main(){
         ClearBackground(SKYBLUE);
         BeginMode3D(cam);
         for(int i = 1; i < BLOCK_END_OF_ENUM; i++){
-            draw_block(texture, i, (Vector3){i - 1, 0.0f, 0.0f}, 1.0f, 1.0f, 1.0f);
+            draw_block(blockTextures, i, (Vector3){i - 1, 0.0f, 0.0f}, 1.0f, 1.0f, 1.0f);
         }
+        // for(int i = 1; i < BLOCK_END_OF_ENUM; i++){
+        //     draw_block(blockTextures, i, (Vector3){i - 1, 0.0f, 0.0f}, 1.0f, 1.0f, 1.0f);
+        // }
         EndMode3D();
         DrawRectangleV((Vector2){GetScreenWidth()/2.0f, GetScreenHeight()/2.0f}, (Vector2){10.0f, 10.0f}, WHITE);
         DrawFPS(10, 10);
+        DrawTexturePro(itemTextures, (Rectangle){16.0f, 0.0f, 16.0f, 16.0f}, (Rectangle){100.0f, 100.0f, 100.0f, 100.0f},
+                                    (Vector2){0.0f, 0.0f}, 0.0f, ORANGE);
+
         EndDrawing();
     }
     CloseWindow();
