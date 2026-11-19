@@ -6,7 +6,7 @@ target("idk")
     add_deps("raylib")
     add_toolchains("w64devkit")
     add_includedirs("raylib/src");
-    set_targetdir("build-$(os)-$(arch)")
+    set_targetdir(".")
     add_files("src/*.c")
 
     if is_os("windows") then
@@ -22,13 +22,13 @@ target("idk")
 
 
 
-target("clean")
-    set_kind("phony")
+-- target("clean")
+--     set_kind("phony")
 
-    on_run(function()
-        os.rm(".xmake", {async = true, detach = true})
-        os.rm("build", {async = true, detach = true})
-    end)
+--     on_run(function()
+--         os.rm(".xmake", {async = true, detach = true})
+--         os.rm("build", {async = true, detach = true})
+--     end)
 
 
 
